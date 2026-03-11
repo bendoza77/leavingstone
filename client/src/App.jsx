@@ -5,12 +5,10 @@ import Contact from './pages/Contact'
 import Work from './pages/Work'
 import Cursor from './components/Cursor'
 import Loader from './components/Loader'
-import Project from './pages/Project'
 
 const App = () => {
   const location = useLocation()
   const [loading, setLoading] = useState(true)
-  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const handleDone = useCallback(() => setLoading(false), [])
 
@@ -26,7 +24,6 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/projects' element={<Work />} />
           <Route path='/contact' element={<Contact />} />
-          <Route path='/project' element={<Project />} />
         </Routes>
       </div>
     </>
