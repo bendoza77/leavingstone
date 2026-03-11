@@ -1,0 +1,412 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Young+Serif&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.home_page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.left_side {
+    height: 100vh;
+    width: 20%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 47%;
+}
+
+.explore {
+    font-family: "Roboto", serif;
+    text-decoration: underline;
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.menu {
+    width: 175px;
+    height: 190px;
+    background-color: rgb(41, 152, 154);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.5s;
+}
+
+.menu_top {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: white;
+    justify-content: space-between;
+    padding: 15px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.menu_bottom {
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 14px;
+}
+
+.menu:hover {
+    background-color: black;
+}
+
+.menu_bottom p{
+    cursor: pointer;
+    width: 40%;
+}
+
+.menu_bottom p {
+  position: relative;
+}
+
+.menu_bottom p::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.menu_bottom p:hover::after {
+  transform: scaleX(1);
+}
+
+
+.middle {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px;
+    margin-left: -50px;
+    gap: 30px;
+}
+
+.middle img {
+    width: 47%;
+}
+
+.right_side {
+    border-left: 1px solid black;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid black;
+}
+
+.right_side img {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    padding: 10px;
+    width: 100%;
+}
+
+.work {
+    width: 100%;
+    height: 100%;
+    background-color: #1f1f1f;
+    position: fixed;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.work_left {
+    height: 100%;
+    width: 25%;
+}
+
+.projects {
+    margin-top: 70px;
+}
+
+.work_right{
+    background-color: white;
+    width: 80%;
+    height: 100%;
+    padding: 30px;
+}
+
+.projects img {
+    width: 35%;
+}
+
+.inp input {
+    color: white;
+    font-weight: 700;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.inp input::placeholder {
+    color: white;
+    font-weight: 700;
+}
+
+.inp {
+    width: 80%;
+    border-bottom: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    width: 80%;
+}
+
+.filter {
+    margin-left: 5px;
+    margin-top: 100px;
+}
+
+.pro {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    height: 100%;
+    gap: 12px;
+    padding: 12px;
+}
+
+.pro::-webkit-scrollbar {
+    display: none;
+}
+
+.work_right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.right_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
+.filter-panel::-webkit-scrollbar {
+    width: 3px;
+}
+.filter-panel::-webkit-scrollbar-track {
+    background: #1f1f1f;
+}
+.filter-panel::-webkit-scrollbar-thumb {
+    background: rgb(41, 152, 154);
+}
+
+.three::-webkit-scrollbar { display: none; }
+
+.pro {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.contact {
+    background-color: #1f1f1f;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.contact_left {
+    width: 40%;
+    height: 100%;
+}
+
+.we img {
+    width: 50%;
+}
+
+.we {
+    margin-top: 70px;
+    padding-bottom: 20px;
+}
+
+.contact_right {
+    background-color: white;
+    width: 60%;
+    height: 100%;
+}
+
+.time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.time_right {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.geo img {
+    width: 100%;
+}
+
+.geo {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.touch {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.touch img {
+    width: 25%;
+}
+
+.links {
+    gap: 5px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.links a{
+    transition: 0.5s;
+}
+
+.links a:hover {
+    color: rgb(41, 152, 154);
+}
+
+.project {
+    width: 100%;
+    height: 100%;
+}
+
+.project_left {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between; 
+    background-color: red;
+}
+
+.sidebar {
+    display: none;
+}
+
+.info h1 {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.info {
+    margin-top: 50px;
+}
+
+.project_left {
+    height: 100%;
+    width: 30%;
+}
+
+.project_right {
+    width: 70%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    padding: 20px;
+}
+
+.project_right::-webkit-scrollbar {
+    display: none;
+}
+
+.cube {
+    width: 100%;
+    height: 80%;
+}
+
+.project {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+}
+
+.three {
+    display: flex;
+    align-items: center;
+}
+
+.three div {
+    width: 335px;
+    height: 346px;
+    background-color: black;
+}
+
+
+.credit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.client p {
+    font-size: 20px;
+    color: white;
+    font-weight: 700;
+}
+

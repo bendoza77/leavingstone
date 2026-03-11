@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.leavingstone.com)",
+      "Bash(grep -E \"\\\\.\\(js|json|html\\)$\")"
+    ]
+  }
+}

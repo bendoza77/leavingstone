@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+/* ─── Theme Tokens ──────────────────────────────────────────── */
+@theme {
+  --color-teal:       #3ba6a1;
+  --color-teal-menu:  #3aa39e;
+  --color-ink:        #111111;
+  --color-paper:      #efefef;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Space Grotesk', 'Inter', sans-serif;
+
+  /* Named animations – usable as animate-* classes */
+  --animate-fade-up:      fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-scroll-arrow: scroll-arrow 1.3s ease-in-out infinite;
+  --animate-marquee:      marquee 20s linear infinite;
+}
+
+/* ─── Keyframes ─────────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(36px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes letter-rise {
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0);    }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes line-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes scroll-arrow {
+  0%,100% { transform: translateX(0);   opacity: 0.4; }
+  50%     { transform: translateX(7px); opacity: 1;   }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0);     }
+  to   { transform: translateX(-50%);  }
+}
+
+/* ─── Custom cursor ─────────────────────────────────────────── */
+
+/* Base — small filled circle */
+.cursor-circle {
+  width:            18px;
+  height:           18px;
+  background-color: #A4DEDA;
+  opacity:          0.75;
+  transition:
+    width      0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    height     0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity    0.4s ease;
+}
+
+/* Arrow inside expanded cursor */
+.cursor-arrow {
+  width:          36px;
+  height:         36px;
+  opacity:        0;
+  pointer-events: none;
+  transition:     opacity 0.25s ease 0.15s;
+}
+
+/* Dark background → white circle */
+.cursor--light {
+  background-color: #ffffff !important;
+}
+
+/* Hover over links/buttons → slightly bigger */
+.cursor--hover {
+  width:   20px !important;
+  height:  20px !important;
+  opacity: 0.45 !important;
+}
+
+/* Hover over image y→ large circle + arrow */
+.cursor--expand {
+  width:   110px !important;
+  height:  110px !important;
+  opacity: 0.9   !important;
+}
+
+.cursor--expand-arrow .cursor-arrow {
+  opacity: 1;
+}
+
+/* Play text inside cursor */
+.cursor-play-text {
+  position:    absolute;
+  opacity:     0;
+  font-size:   13px;
+  font-weight: 700;
+  color:       #111;
+  letter-spacing: 1px;
+  pointer-events: none;
+  transition:  opacity 0.25s ease 0.15s;
+}
+
+.cursor--play .cursor-play-text {
+  opacity: 1;
+}
+
+.cursor--play .cursor-arrow {
+  opacity: 0;
+}
+
+/* ─── Loader ────────────────────────────────────────────────── */
+
+/* Background panel: right → center */
+@keyframes panel-enter {
+  0%   { transform: translateX(110vw); }
+  100% { transform: translateX(0);     }
+}
+
+/* Background panel: follows text left — arrives off-screen together */
+@keyframes panel-exit {
+  0%   { transform: translateX(0);      }
+  100% { transform: translateX(-110vw); }
+}
+
+/* Words enter: right → center (staggered) */
+@keyframes word-enter {
+  0%   { transform: translateX(80vw); opacity: 0; }
+  45%  { opacity: 1;                              }
+  100% { transform: translateX(0);    opacity: 1; }
+}
+
+/* Words exit: center → left (staggered) */
+@keyframes word-exit {
+  0%   { transform: translateX(0);      opacity: 1; }
+  30%  { opacity: 1;                                }
+  100% { transform: translateX(-110vw); opacity: 0; }
+}
+
+/* ─── Base Reset ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  background-color: #f5f5f3;
+  color: #111111;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Desktop: lock vertical scroll (layouts are full-screen) */
+@media (min-width: 1024px) {
+  html, body { overflow: hidden; }
+}
+
+#root { height: 100%; min-height: 100dvh; }
+
+/* Touch devices: hide mouse cursor */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-circle { display: none !important; }
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #efefef; }
+::-webkit-scrollbar-thumb { background: #3ba6a1; }
+
+/* ─── Heartbeat menu animations ────────────────────────────── */
+
+/* OPEN: slides in from bottom → top with a double-pulse bounce */
+@keyframes heartbeat-in {
+  0%   { transform: translateY(100%); opacity: 0;   }
+  45%  { transform: translateY(-9%);  opacity: 1;   }  /* overshoot up   */
+  62%  { transform: translateY(5%);               }  /* bounce back    */
+  76%  { transform: translateY(-3%);              }  /* small pulse    */
+  88%  { transform: translateY(1%);               }  /* settle         */
+  100% { transform: translateY(0%);   opacity: 1;   }
+}
+
+/* CLOSE: quick heartbeat kick upward, then falls down → disappears */
+@keyframes heartbeat-out {
+  0%   { transform: translateY(0%);    opacity: 1; }
+  18%  { transform: translateY(-7%);              }  /* heartbeat kick */
+  35%  { transform: translateY(2%);               }  /* drop back      */
+  100% { transform: translateY(110%);  opacity: 0; }
+}
+
+.menu-heartbeat-in {
+  animation: heartbeat-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.menu-heartbeat-out {
+  animation: heartbeat-out 0.48s cubic-bezier(0.55, 0, 0.45, 1) both;
+}
+
+/* Each nav link staggers in from bottom with its own delay */
+.menu-link-in {
+  animation: heartbeat-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Menu link active state ────────────────────────────────── */
+.menu-link-active {
+  opacity: 1 !important;
+}
+
+/* ─── Nav link hover slide ──────────────────────────────────── */
+.nav-slide {
+  display: inline-block;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+.nav-slide:hover {
+  transform: translateX(5px);
+  opacity: 1 !important;
+}
